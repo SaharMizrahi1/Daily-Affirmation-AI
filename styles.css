@@ -1,0 +1,304 @@
+:root {
+    --pink-light: #fce4e4;
+    --gray-light: #f5f5f5;
+    --text-dark: #333333;
+    --whatsapp-green: #25D366;
+    --instagram-gradient: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+body {
+    font-family: "Roboto", serif;
+    background-color: var(--pink-light);
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+}
+
+.container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    color: var(--text-dark);
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.mood-select {
+    font-family: "Roboto", serif;
+    width: 80%;
+    padding: 15px;
+    margin: 20px 0;
+    border: 2px solid var(--pink-light);
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.mood-select:focus {
+    border-color: #ffb6c1;
+    box-shadow: 0 0 10px rgba(255, 182, 193, 0.2);
+}
+
+.generate-btn {
+    background-color: var(--text-dark);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#output {
+    margin-top: 30px;
+    padding: 20px;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    font-style: italic;
+    line-height: 1.6;
+    background-color: var(--gray-light);
+    border-radius: 15px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between icon and text */
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.share-btn i {
+    font-size: 1.2rem; /* Icon size */
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#whatsappShare {
+    background-color: var(--whatsapp-green);
+}
+
+#whatsappShare:hover {
+    background-color: #128C7E;
+}
+
+#instagramShare {
+    background-image: var(--instagram-gradient);
+}
+
+#instagramShare:hover {
+    background-image: linear-gradient(45deg, #e6683c, #dc2743, #cc2366);
+}
+
+.custom-mood-input {
+    width: 80%;
+    margin: 20px auto;
+    padding: 15px;
+    border: 2px solid var(--pink-light);
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: white;
+    outline: none;
+    transition: all 0.3s ease;
+    display: none; /* Initially hidden */
+    box-sizing: border-box;
+}
+
+.custom-mood-input:focus {
+    border-color: #ffb6c1;
+    box-shadow: 0 0 10px rgba(255, 182, 193, 0.2);
+}
+
+
+.favorite-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #ff6b6b; /* Heart color */
+    transition: transform 0.3s ease;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Sidebar hidden by default */
+.hidden {
+    transform: translateX(100%); /* Move sidebar off the screen */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Show sidebar when active */
+.favorites-section {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 25%;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    position: fixed; /* Sidebar stays fixed on the right */
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1000;
+    transform: translateX(100%); /* Hidden by default */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Show sidebar when toggled */
+.favorites-section.active {
+    transform: translateX(0); /* Slide in */
+
+}
+
+/* Sidebar title */
+.favorites-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+    font-weight: 400;
+    text-align: center;
+    border-bottom: 1px solid var(--pink-light);
+    padding-bottom: 5px;
+}
+
+/* Favorites list */
+.favorites-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+/* Each favorite item */
+.favorites-list li {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: var(--gray-light);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for favorites */
+.favorites-list li:hover {
+    background-color: var(--pink-light);
+    cursor: pointer;
+}
+
+/* Toggle button */
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--text-dark);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggle-btn i {
+    font-size: 1.2rem;
+}
+
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .description {
+        font-size: 1rem;
+    }
+    
+    .mood-select {
+        width: 90%;
+    }
+
+    .share-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .share-btn i {
+        font-size: 1rem; /* Smaller icon for mobile */
+    }
+}
